@@ -1,0 +1,7 @@
+# Default ignored files
+.idea
+build
+dist
+*.egg-info
+setup.py
+start.py

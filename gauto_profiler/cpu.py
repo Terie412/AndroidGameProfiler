@@ -36,7 +36,7 @@ class CPURecorder(RecorderBase):
             cpu_info_list = cpu_info_string.split()
             self.data = cpu_info_list[8].rstrip().lstrip()
             if self.data.replace(".", "").isalnum():
-                self.data = int(float(self.data)) / 8
+                self.data = int(float(self.data))
                 logger.info(f"cpu usage = {self.data}")
             else:
                 logger.warning(f"Failed to get cpu info")

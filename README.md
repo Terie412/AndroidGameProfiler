@@ -1,4 +1,8 @@
 ## AndroidGameProfiler
+![symbol](https://img.shields.io/badge/qintianchen-gauto--profiler-orange)
+[![0.1.1](https://img.shields.io/badge/version-v0.1.1-blue)](https://pypi.org/manage/project/gauto-profiler/releases/) 
+
+[中文文档](./README_cn.md)
 
 A python library that captures the three basic capabilities of a game on Android -- Total PSS (physical memory used by applications, including proportionally Shared library memory), CPU usage, and FPS (frame rate).
 

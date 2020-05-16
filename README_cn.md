@@ -1,4 +1,6 @@
 ## AndroidGameProfiler
+![symbol](https://img.shields.io/badge/qintianchen-gauto--profiler-orange)
+[![0.1.1](https://img.shields.io/badge/version-v0.1.1-blue)](https://pypi.org/manage/project/gauto-profiler/releases/) 
 
 一个python库，用来获取Android上游戏的三项基础性能——Total pss（应用占用的物理内存，包含比例分配的共享库占用的内存），cpu占用率和FPS（帧率）。
 

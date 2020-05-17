@@ -1,4 +1,4 @@
-from gauto_profiler.base import *
+from gauto_profiler.core.base import *
 
 
 class FPSRecorder(RecorderBase):
@@ -20,10 +20,11 @@ class FPSRecorder(RecorderBase):
         with open(file_name, "a+") as fp:
             if not self.if_head_written:
                 fp.write("time stamp,fps(frames per sec)\n")
+                self.if_head_written = True
             fp.write(f"{self.time_stamp},{self.data}\n")
 
     def get_fps_info(self):
-        self.time_stamp = time.time_ns() / 1E6
+        self.time_stamp = time.time_ns() / 1E9 # s
         clear = f'shell dumpsys SurfaceFlinger --latency -clear'
         excute_adb_process(clear, RecorderBase.serial)
         pro = f" - {RecorderBase.main_activity}" if self.sdk_version > 23 else ""

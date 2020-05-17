@@ -5,3 +5,7 @@ dist
 *.egg-info
 setup.py
 start.py
+the_simplest_test.py
+output
+*.html
+*.pyc

@@ -17,34 +17,13 @@ pip install gauto-profiler
 ## Usage
 
 ```python
-from gauto_profiler.mem import *
-from gauto_profiler.cpu import *
-from gauto_profiler.fps import *
 import os
 
+from gauto_profiler import profiler
+from gauto_profiler import  config
+
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
-os.environ["ANDROID_SERIAL"] = "5366a3d3" # the serial of the android device you are willing to test
 
-# Specify the output directory.
-# All these threads will share a directory, so once one thread has specify the path, there is no need to do so for the subsequent threads
-mem_thread = MemRecorder("output")
-cpu_thread = CPURecorder()
-fps_thread = FPSRecorder()
-
-# start running
-mem_thread.start()
-cpu_thread.start()
-fps_thread.start()
-
-time.sleep(300) # run for 5 mins
-
-# stop
-mem_thread.stop()
-cpu_thread.stop()
-fps_thread.stop()
-mem_thread.join()
-cpu_thread.join()
-fps_thread.join()
-
-print("All threads have stopped")
+config.setup(serial="5366a3d3", output_path="output", html_save_path="output/render.html")
+profiler.run(300)
 ```

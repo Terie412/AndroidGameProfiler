@@ -1,4 +1,4 @@
-from gauto_profiler.base import *
+from gauto_profiler.core.base import *
 
 
 class CPURecorder(RecorderBase):
@@ -20,10 +20,11 @@ class CPURecorder(RecorderBase):
         with open(file_name, "a+") as fp:
             if not self.if_head_written:
                 fp.write("time stamp,cpu usage(%)\n")
+                self.if_head_written = True
             fp.write(f"{self.time_stamp},{self.data}\n")
 
     def get_cpu_info(self):
-        self.time_stamp = time.time_ns() / 1E6 # ms
+        self.time_stamp = time.time_ns() / 1E9 # s
         if RecorderBase.sdk_version <= 23:
             cpu_cmd = f"shell top -n 1 -m 3 -d 0.1 | findstr {RecorderBase.pid}"
             cpu_info_string = excute_adb_process(cpu_cmd, RecorderBase.serial)

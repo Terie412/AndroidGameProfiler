@@ -1,5 +1,4 @@
-import gauto_profiler
-from gauto_profiler.base import *
+from gauto_profiler.core.base import *
 
 
 class MemRecorder(RecorderBase):
@@ -21,10 +20,11 @@ class MemRecorder(RecorderBase):
         with open(file_name, "a+") as fp:
             if not self.if_head_written:
                 fp.write("time stamp,mem(kB),mem(MB)\n")
+                self.if_head_written = True
             fp.write(f"{self.time_stamp},{self.data},{self.data/1024}\n")
 
     def get_memory_info(self):
-        self.time_stamp = time.time_ns()/1E6
+        self.time_stamp = time.time_ns()/1E9 # s
         cmd = f"shell dumpsys meminfo {RecorderBase.pkg_name} | findstr TOTAL"
         mem_info_string = excute_adb_process(cmd, RecorderBase.serial)
         mem_info_list = mem_info_string.split('\n')
